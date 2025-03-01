@@ -1,0 +1,60 @@
+﻿@model Mission08Group4_7.Models.TaskClass
+
+<div class="container mt-5">
+    <h1 class="text-center">Enter a Task</h1> <!-- Keep this static for now -->
+
+    <form method="post">
+        <!-- New hidden field for TaskId (commented out for now) -->
+        <input type="hidden" asp-for="TaskId" />
+
+        <div class="mb-3">
+            <label class="form-label">Task:</label>
+            <input class="form-control" asp-for="TaskName" required /> <!-- New version -->
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Due Date:</label>
+            <input type="date" class="form-control" asp-for="DueDate" /> <!-- New version -->
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Quadrant:</label>
+
+            
+            <select class="form-select" asp-for="Quadrant">
+                <option value="1">1 - Important + Urgent</option>
+                <option value="2">2 - Important + Not Urgent</option>
+                <option value="3">3 - Not Important + Urgent</option>
+                <option value="4">4 - Not Important + Not Urgent</option>
+            </select>
+            <!-- New version -->
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Category:</label>
+
+            
+            <select class="form-select" asp-for="CategoryId">
+                <option value="">Select an option</option>
+                @foreach (Categories category in ViewBag.Categories)
+                {
+                    <option value="@category.CategoryId" >
+                        @category.Category
+                    </option>
+                }
+            </select>
+            <!-- New version -->
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Completed:</label>
+            <select class="form-select" asp-for="Completed">
+                <option value="true" >Yes</option>
+                <option value="false" selected>No</option>
+            </select>
+            <!-- New version -->
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">@(Model.TaskId == 0 ? "Submit Task" : "Update Task")</button> <!-- New version --> 
+    </form>
+</div>
