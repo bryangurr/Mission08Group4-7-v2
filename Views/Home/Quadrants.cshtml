@@ -4,7 +4,6 @@
 @{
 }
 @model List<TaskClass>
-
 <div class="container">
     <div class="row">
         <div class="col">
@@ -13,59 +12,71 @@
     </div>
     <div class="row">
         <div class="col-2"></div>
-		<div class="col"><b>Urgent</b></div>
-		<div class="col"><b>Not Urgent</b></div>
+        <div class="col"><h2><b>Urgent</b></h2></div>
+        <div class="col"><h2><b>Not Urgent</b></h2></div>
     </div>
     <div class="row">
-		<div class="col-2 d-flex align-items-center justify-content-center text-rotate"><b>Important</b></div>
+        <div class="col-2 d-flex align-items-center justify-content-center text-rotate"><h2><b>Important</b></h2></div>
         <div class="col">
-			<h2><b>Quadrant 1</b></h2>
+            <b>Quadrant 1</b>
             <br />
             @foreach (var t in Model)
             {
-            if (t.Quadrant == 1)
-            {
-                    <p>Task: @t.TaskName, Due Date: @t.DueDate, Category: @t.Category
+                if (t.Quadrant == 1)
+                {
+                    <p>
+                        Task: @t.TaskName, Due Date: @t.DueDate, Category: @t.Category?.Category
                         <a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@t.TaskId">Edit</a>
                         <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@t.TaskId">Delete</a>
                     </p>
-
+                }
             }
-            }
-         </div>
+        </div>
         <div class="col">
-			<h2><b>Quadrant 2</b></h2>
+            <b>Quadrant 2</b>
             <br />
             @foreach (var t in Model)
             {
                 if (t.Quadrant == 2)
                 {
-                    <p>Task: @t.TaskName, Due Date: @t.DueDate, Category: @t.Category</p>
+                    <p>
+                        Task: @t.TaskName, Due Date: @t.DueDate, Category: @t.Category?.Category
+                        <a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@t.TaskId">Edit</a>
+                        <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@t.TaskId">Delete</a>
+                    </p>
                 }
             }
         </div>
     </div>
     <div class="row">
-		<div class="col-2 d-flex align-items-center justify-content-center text-rotate"><b>Not Important</b></div>
+        <div class="col-2 d-flex align-items-center justify-content-center text-rotate"><h2><b>Not Important</b></h2></div>
         <div class="col">
-			<h2><b>Quadrant 3</b></h2>
+            <b>Quadrant 3</b>
             <br />
             @foreach (var t in Model)
             {
                 if (t.Quadrant == 3)
                 {
-                    <p>Task: @t.TaskName, Due Date: @t.DueDate, Category: @t.Category</p>
+                    <p>
+                        Task: @t.TaskName, Due Date: @t.DueDate, Category: @t.Category?.Category
+                        <a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@t.TaskId">Edit</a>
+                        <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@t.TaskId">Delete</a>
+                    </p>
                 }
             }
         </div>
         <div class="col">
-			<h2><b>Quadrant 4</b></h2>
+            <b>Quadrant 4</b>
             <br />
             @foreach (var t in Model)
             {
                 if (t.Quadrant == 4)
                 {
-                    <p>Task: @t.TaskName, Due Date: @t.DueDate, Category: @t.Category</p>
+                    <p>
+                        Task: @t.TaskName, Due Date: @t.DueDate, Category: @t.Category?.Category
+                        <a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@t.TaskId">Edit</a>
+                        <a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@t.TaskId">Delete</a>
+                    </p>
                 }
             }
         </div>

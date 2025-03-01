@@ -24,6 +24,7 @@ namespace Mission08Group4_7.Controllers
         [HttpGet]
         public IActionResult Quadrants()
         {
+            ViewBag.Categories = _repo.Categories.ToList(); // Re-populate dropdown list
             var tasks = _repo.Tasks
                 .Where(x => x.Completed == false)
                 .ToList(); // Load all tasks
@@ -40,14 +41,16 @@ namespace Mission08Group4_7.Controllers
         [HttpPost]
         public IActionResult AddTask(TaskClass task)
         {
+            ViewBag.Categories = _repo.Categories.ToList(); // Re-populate dropdown list
             if (ModelState.IsValid)
             {
+
                 _repo.AddTask(task);
                 return View("Confirmation", task); 
             }
             else
             {
-                ViewBag.Categories = _repo.Categories.ToList(); // Re-populate dropdown list
+                //ViewBag.Categories = _repo.Categories.ToList(); // Re-populate dropdown list
                 return View(task);
             }
         }
